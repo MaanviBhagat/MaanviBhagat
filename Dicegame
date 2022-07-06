@@ -1,0 +1,154 @@
+using System; 
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int choice;
+            Console.WriteLine("Let's start with the dice game!!!");
+            Console.WriteLine("Enter 1 if you want to play with the computer");
+            Console.WriteLine("Enter 2 if you want to pass and play with a friend");
+            choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine("*****************");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Program p = new Program();
+            switch (choice)
+            {
+                case 1: 
+                    p.computer();
+                    break;
+
+                case 2:
+                    p.passplay();
+                    break; 
+            }
+        }
+        public void computer()
+        {
+            int player1, computer;
+            int player1point = 0;
+            int computerpoint = 0;
+            int totalplayer1 = 0;
+            int totalcomputer = 0;
+            Console.WriteLine("The game has five rounds...");
+            for (int i = 0; i <= 5; i++)
+            {
+                Console.WriteLine("Press a key to roll the dice");
+                Console.ReadKey();
+                Random random = new Random();
+                player1 = random.Next(1, 7);
+                Console.WriteLine("Player: Your dice shows: " + player1);
+                computer = random.Next(1, 7);
+                System.Threading.Thread.Sleep(1000);
+                Console.WriteLine("Computer: His dice shows: " + computer);
+                System.Threading.Thread.Sleep(1000);
+                if (player1 > computer)
+                {
+                    player1point++;
+                    Console.WriteLine("Player Won! Computer Lost :c "); }
+                else
+                { 
+                if (computer > player1)
+                {
+                    computerpoint++; 
+                    Console.WriteLine("Computer Won! Player Lost :c "); }
+                else
+                { Console.WriteLine("Draw :) "); }
+                }
+                totalplayer1 = totalplayer1 + player1point;
+                totalcomputer = totalcomputer + computerpoint; 
+                player1point = 0;
+                computerpoint = 0;
+                Console.WriteLine("Total points currently:------");
+                Console.WriteLine("Player points: "+totalplayer1);
+                Console.WriteLine("Computer points: "+totalcomputer);
+                Console.WriteLine();
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Game ended!");
+            Console.ReadKey();
+            if (totalplayer1 > totalcomputer)
+            { Console.WriteLine("Player Won the whole game! Computer Lost :c "); }
+            else if (totalcomputer > totalplayer1)
+            { Console.WriteLine("Computer Won the whole game! Player Lost :c "); }
+            else
+            { Console.WriteLine("Whole game is a Draw :) "); }
+            Console.ReadKey();
+        }
+
+        public void passplay()
+        {
+            int player1, player2;
+            int player1point = 0;
+            int player2point = 0;
+            int totalplayer1 = 0;
+            int totalplayer2 = 0;
+                Console.WriteLine("The game has five rounds...");
+            for (int i = 0; i <= 5; i++)
+            {
+                Console.WriteLine("Player 1: Press a key to roll the dice");
+                Console.ReadKey();
+                Random randoms = new Random();
+                player1 = randoms.Next(1, 7);
+                Console.WriteLine("Player 1: Your dice shows: " + player1);
+                Console.WriteLine("Player 2: Press a key to roll the dice");
+                Console.ReadKey();
+                player2 = randoms.Next(1, 7);
+                System.Threading.Thread.Sleep(1000);
+                Console.WriteLine("Player 2: Your dice shows: " + player2);
+                System.Threading.Thread.Sleep(1000);
+                if (player1 > player2)
+                {
+                    player1point++;
+                    Console.WriteLine("Player 1 Won! Player 2 Lost :c ");
+                }
+                else
+                {
+                    if (player2 > player1)
+                    {
+                        player2point++;
+                        Console.WriteLine("Player 2 Won! Player 1 Lost :c ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Draw :) ");
+                    }
+                }
+                totalplayer1 = totalplayer1 + player1point;
+                totalplayer2 = totalplayer2 + player2point;
+                player1point = 0;
+                player2point = 0;
+                Console.WriteLine("Total points currently:------");
+                Console.WriteLine("Player 1 points: " + totalplayer1);
+                Console.WriteLine("Player 2 points: " + totalplayer2);
+                Console.WriteLine();
+                Console.WriteLine("------------------------------------");
+                Console.WriteLine();
+                
+            }
+            Console.WriteLine();
+            Console.WriteLine("Game ended!");
+            Console.ReadKey();
+            if (totalplayer1 > totalplayer2)
+            { Console.WriteLine("Player 1 Won the whole game! Player 2 Lost :c "); }
+            else if (totalplayer2 > totalplayer1)
+            { Console.WriteLine("Player 2 Won the whole game! Player 1 Lost :c "); }
+            else
+            { Console.WriteLine("Whole game is a Draw :) "); }
+            Console.ReadKey();
+        }
+    }
+}
+
+
